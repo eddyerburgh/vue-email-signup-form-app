@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-contents">
+        <div class="box">
+            <button aria-label="close" class="delete"></button>
+            <p>some content</p>
+        </div>
+    </div>
+</div>
+`;
