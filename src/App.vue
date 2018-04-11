@@ -1,18 +1,19 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <Modal :visible="displayModal" :onClose="closeModal">
-      <div>
-      <Form/>
-    </div>
-    </Modal>
+    <alternative-modal
+      v-if="displayModal"
+      v-on:close-modal="closeModal"
+    >
+      <Form />
+  </alternative-modal>
   </div>
 </template>
 
 <script>
 import Form from './components/Form'
 import Modal from './components/Modal'
-import 'bulma/css/bulma.css'
+import AlternativeModal from './components/AlternativeModal'
 
 export default {
   name: 'App',
@@ -21,10 +22,11 @@ export default {
   }),
   components: {
     Form,
-    Modal
+    Modal,
+    AlternativeModal
   },
   methods: {
-    closeModal() {
+    closeModal () {
       this.displayModal = false
     }
   }

@@ -16,16 +16,14 @@
 </template>
 
 <script>
-  import axios from 'axios'
-
-  export default {
-    data: () => ({
-      email: null
-    }),
-    methods: {
-      handleSubmit(event) {
-        this.$httpCall(this.email)
-      }
+export default {
+  data: () => ({
+    email: null
+  }),
+  methods: {
+    handleSubmit (event) {
+      this.$httpCall(this.email)
     }
   }
+}
 </script>
