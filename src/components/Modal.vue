@@ -1,21 +1,14 @@
 <template>
-  <div v-if="visible" class="modal is-active">
+  <div class="modal is-active">
     <div class="modal-background"></div>
-    <div class="modal-contents">
+    <div class="modal-content">
       <div class="box">
         <button
-          @click="onClose"
-          class="delete"
-          aria-label="close">
-        </button>
+          class="delete is-pulled-right"
+          @click="$emit('close-modal')"
+        />
         <slot />
-        </div>
       </div>
     </div>
+  </div>
 </template>
-
-<script>
-export default {
-  props: ['visible', 'onClose']
-}
-</script>

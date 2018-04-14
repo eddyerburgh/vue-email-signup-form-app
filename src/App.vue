@@ -1,19 +1,17 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <alternative-modal
+  <div>
+    <modal
       v-if="displayModal"
       v-on:close-modal="closeModal"
     >
-      <Form />
-  </alternative-modal>
+      <Form v-on:form-submitted="closeModal" />
+    </modal>
   </div>
 </template>
 
 <script>
 import Form from './components/Form'
 import Modal from './components/Modal'
-import AlternativeModal from './components/AlternativeModal'
 
 export default {
   name: 'App',
@@ -22,8 +20,7 @@ export default {
   }),
   components: {
     Form,
-    Modal,
-    AlternativeModal
+    Modal
   },
   methods: {
     closeModal () {
@@ -32,14 +29,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

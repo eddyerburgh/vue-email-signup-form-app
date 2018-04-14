@@ -1,9 +1,9 @@
 import App from '../App.vue'
 import { shallow } from '@vue/test-utils'
-import AlternativeModal from '../components/AlternativeModal.vue'
+import Modal from '../components/Modal.vue'
 
-test('hides AlternativeModal when AlternativeModal emits close-modal', () => {
-  const wrapper = shallow(App)
-  wrapper.find(AlternativeModal).vm.$emit('close-modal')
-  expect(wrapper.find(AlternativeModal).exists()).toBeFalsy()
+test('hides Modal when Modal emits close-modal', () => {
+  const wrapper = shallow(App) // #A
+  wrapper.find(Modal).vm.$emit('close-modal') // #B
+  expect(wrapper.find(Modal).exists()).toBeFalsy()
 })
