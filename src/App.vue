@@ -1,11 +1,12 @@
 <template>
   <div>
-    <modal
+    <Modal
       v-if="displayModal"
       @click="closeModal"
+      :onClose="closeModal"
     >
       <Form v-on:form-submitted="closeModal" />
-    </modal>
+    </Modal>
   </div>
 </template>
 
