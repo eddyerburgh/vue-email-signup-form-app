@@ -1,9 +1,8 @@
 <template>
   <div>
-    <Modal
+    <modal
       v-if="displayModal"
-      @click="closeModal"
-      :onClose="closeModal"
+      v-on:close-modal="closeModal"
     >
       <Form v-on:form-submitted="closeModal" />
     </Modal>
