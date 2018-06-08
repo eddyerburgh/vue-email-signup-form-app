@@ -9,7 +9,10 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "vue": "^2.5.16"
+    "axios": "^0.18.0",
+    "bulma": "^0.7.1",
+    "vue": "^2.5.16",
+    "vue-axios": "^2.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.16",
