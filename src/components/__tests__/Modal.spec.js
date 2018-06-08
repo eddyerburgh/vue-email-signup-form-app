@@ -1,9 +1,9 @@
 import Modal from '../../../src/components/Modal.vue'
-import { shallow } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 
 describe('Modal.vue', () => {
   test('renders slot content', () => {
-    const wrapper = shallow(Modal, {
+    const wrapper = shallowMount(Modal, {
       slots: {
         default: '<span />'
       }
