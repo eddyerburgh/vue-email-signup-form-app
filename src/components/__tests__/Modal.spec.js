@@ -13,7 +13,7 @@ describe('Modal.vue', () => {
 
   test('emits on-close when button is clicked', () => {
     const wrapper = shallowMount(Modal)
-    wrapper.find('button').trigger('click') // #A
-    expect(wrapper.emitted('close-modal')).toHaveLength(1) // #B
+    wrapper.find('button').trigger('click')
+    expect(wrapper.emitted('close-modal')).toHaveLength(1)
   })
 })

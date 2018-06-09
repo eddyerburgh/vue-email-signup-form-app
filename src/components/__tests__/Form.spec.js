@@ -6,54 +6,61 @@ describe('Form.vue', () => {
     const wrapper = shallowMount(Form, {
       mocks: { axios: { post: jest.fn() } }
     })
-    wrapper.find('button').trigger('submit') // #A
-    expect(wrapper.emitted('form-submitted')).toHaveLength(1) // #B
+    wrapper.find('button').trigger('submit')
+    expect(wrapper.emitted('form-submitted')).toHaveLength(1)
   })
 
   test('sends post request with email on submit', () => {
-    const axios = { // #A
+    const axios = {
       post: jest.fn()
     }
-    const wrapper = shallowMount(Form, { // #B
+    const wrapper = shallowMount(Form, {
       mocks: {
         axios
       }
     })
-    const input = wrapper.find('input[type="email"]') // #C
-    input.element.value = 'email@gmail.com' // #D
-    input.trigger('input') // #E
-    wrapper.find('button').trigger('submit') // #F
+    const input = wrapper.find('input[type="email"]')
+    input.setValue('email@gmail.com')
+    wrapper.find('button').trigger('submit')
     const url = 'http://demo7437963.mockable.io/validate'
     const expectedData = expect.objectContaining({
       email: 'email@gmail.com'
     })
-    expect(axios.post).toHaveBeenCalledWith(url, expectedData) // #G
+    expect(axios.post).toHaveBeenCalledWith(url, expectedData)
   })
 
-  test('sends post request with the shouldContact tickbox on submit', () => {
+  test('sends post request with default enterCompetition checkbox value on submit', () => {
     const axios = {
       post: jest.fn()
     }
-    const wrapper = shallowMount(Form, { // #A
+    const wrapper = shallowMount(Form, {
+      mocks: {
+        axios
+      }
+    })
+    const url = 'http://demo7437963.mockable.io/validate'
+    wrapper.find('button').trigger('submit')
+    expect(axios.post).toHaveBeenCalledWith(url, expect.objectContaining({
+      enterCompetition: true
+    }))
+  })
+
+  test('sends post request with enterCompetition checkbox value on submit', () => {
+    const axios = {
+      post: jest.fn()
+    }
+    const wrapper = shallowMount(Form, {
       mocks: {
         axios
       }
     })
     const url = 'http://demo7437963.mockable.io/validate'
 
-    wrapper.find('button').trigger('submit') // #B
+    wrapper.find('input[value="no"]').setChecked()
+    wrapper.find('button').trigger('submit')
 
     expect(axios.post).toHaveBeenCalledWith(url, expect.objectContaining({
-      enterCompetition: true
-    }))
-
-    const noRadiobox = wrapper.find('input[value="no"]') // #D
-    noRadiobox.checked = true // #E
-    noRadiobox.trigger('change') // #F
-    wrapper.find('button').trigger('submit') // #G
-
-    expect(axios.post).toHaveBeenCalledWith(url, expect.objectContaining({
-      enterCompetition: true
+      enterCompetition: false
     }))
   })
 })
